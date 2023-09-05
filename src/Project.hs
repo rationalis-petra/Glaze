@@ -38,10 +38,10 @@ project_file = do
     version_num :: Parser (Int, Int, Int)
     version_num = do
       s <- symbol
-      if (s == "glaze-version") then
+      if (s == "hex-version") then
         lexeme $ (,,) <$> L.decimal <*> L.decimal <*> L.decimal
       else
-        fail ("Expecting glaze-version, got: " <> unpack s)
+        fail ("Expecting hex-version, got: " <> unpack s)
 
 
   
@@ -52,7 +52,7 @@ data BuildFile
    , subcomponents :: [Text] -- sub-documents
    }
 
-  | GlyphBulid
+  | HexBulid
    { name :: Text
    , public_name :: Text
    , subcomponents :: [Text] -- libraries

@@ -1,4 +1,4 @@
-# Changelog for `glaze`
+# Changelog for `hex`
 
 All notable changes to this project will be documented in this file.
 

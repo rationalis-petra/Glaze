@@ -15,26 +15,26 @@ data Command
   | TestCommand CommandOpts
   | RunCommand CommandOpts
 
-glaze_opts :: Parser Command
-glaze_opts = subparser $
+hex_opts :: Parser Command
+hex_opts = subparser $
   (command "build" $
    info (BuildCommand <$> command_opts)
-        (progDesc "Build a glaze target"))
+        (progDesc "Build a hex target"))
   <>
   (command "test" $ 
    info (TestCommand <$> command_opts)
-        (progDesc "Test a glaze target"))
+        (progDesc "Test a hex target"))
   <>
   (command "run" $
    info (RunCommand <$> command_opts)
-        (progDesc "Run a glaze target"))
+        (progDesc "Run a hex target"))
 
 main :: IO ()
 main = do
-  command <- execParser $ info (glaze_opts <**> helper)
+  command <- execParser $ info (hex_opts <**> helper)
     ( fullDesc
-    <> progDesc "Buld, test and run glaze projects"
-    <> header "The glaze build system")
+    <> progDesc "Buld, test and run hex projects"
+    <> header "The hex build system")
   case command of 
     BuildCommand (CommandOpts targets) ->
       putStrLn $ "building targsts: " <> show targets
